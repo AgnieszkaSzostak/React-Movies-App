@@ -9,17 +9,29 @@ function App() {
       <nav>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink 
+              to="/"
+              style={({isActive}) => ({
+                fontWeight: isActive ? 700 : 400
+              })}>
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/movies/search">Movies search</NavLink>
+            <NavLink 
+              to="/movies/search"
+              style={({isActive}) => ({
+                fontWeight: isActive ? 700 : 400
+              })}>
+              Movies search
+            </NavLink>
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path={"/"} element={<PageHome/>}></Route>
-        <Route path={"/movies/search"} element={<PageMoviesSearch/>}></Route>
-      </Routes>
+        <Routes>
+          <Route path={"/"} element={<PageHome/>}></Route>
+          <Route path={"/movies/search"} element={<PageMoviesSearch/>}></Route>
+        </Routes>
     </div>
   );
 }
