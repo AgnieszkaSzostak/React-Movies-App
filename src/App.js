@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useCallback, useState, useEffect} from 'react';
+import React from 'react';
 import PageHome from './pages/PageHome/PageHome';
 import PageMoviesSearch from './pages/PageMoviesSearch/PageMoviesSearch';
 import { Routes, Route} from 'react-router-dom';
@@ -11,7 +11,7 @@ import PageLogOut from './pages/PageLogOut/PageLogOut';
 import { useUser } from './contexts/userContext';
 
 function App() {
-  const {isUserLoggedIn, logIn, logOut} = useUser()
+  const {isUserLoggedIn} = useUser()
 
   return (
     <div>
@@ -23,9 +23,9 @@ function App() {
       </NavBar>
       : null}
         <Routes>
-          <Route path="/logout" element={<PageLogOut onLogOut={logOut}/>}></Route>
+          <Route path="/logout" element={<PageLogOut />}></Route>
           {!isUserLoggedIn
-          ?<Route path={"/"} element={<PageLogin onLoginClick={logIn}/>}></Route>
+          ?<Route path={"/"} element={<PageLogin />}></Route>
           : <>
             <Route path={"/"} element={<PageHome/>}></Route>
               <Route path={"/movies/search"} element={<PageMoviesSearch/>}>

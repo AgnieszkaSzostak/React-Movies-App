@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 
 import classes from './styles.module.css'
 import { Navigate } from 'react-router'
+import { useUser } from '../../contexts/userContext'
 
 export const PageLogOut = (props) => {
   const {
     className,
-    onLogOut,
     ...otherProps
   } = props
-
+  const {logOut} = useUser()
   useEffect(() => {
-    onLogOut()
+    logOut()
   },[])
   return (
     <div
@@ -26,7 +26,7 @@ export const PageLogOut = (props) => {
 
 PageLogOut.propTypes = {
   className: PropTypes.string,
-  onLogOut: PropTypes.func
+
 }
 
 export default PageLogOut

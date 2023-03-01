@@ -28,7 +28,7 @@ const UserContextProvider = (props) => {
 }
 
 UserContextProvider.propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.node
 
 }
 
