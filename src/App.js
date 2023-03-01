@@ -1,7 +1,7 @@
 import './App.css';
 import PageHome from './pages/PageHome/PageHome';
 import PageMoviesSearch from './pages/PageMoviesSearch/PageMoviesSearch';
-import { Routes, Route, Link} from 'react-router-dom';
+import { Routes, Route, NavLink} from 'react-router-dom';
 
 function App() {
   return (
@@ -9,10 +9,10 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/movies/search">Movies search</Link>
+            <NavLink to="/movies/search">Movies search</NavLink>
           </li>
         </ul>
       </nav>
