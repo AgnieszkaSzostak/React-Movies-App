@@ -8,20 +8,11 @@ import { NavBar } from './components/NavBar/NavBar';
 import { PageMoviesSearchResults } from './pages/PageMoviesSearchResults/PageMoviesSearchResults';
 import PageLogin from './pages/PageLogin/PageLogin';
 import PageLogOut from './pages/PageLogOut/PageLogOut';
+import { useUser } from './contexts/userContext';
 
 function App() {
-  const [isUserLoggedIn, setUserLoggedIn] = useState(localStorage.getItem('isUserLoggedIn') === "true")
-  const logIn = useCallback(() => {
-    setUserLoggedIn(true)
-  }, [])
-  const logOut = useCallback(() => {
-    setUserLoggedIn(false)
-  }, [])
-  useEffect(() => {
-    isUserLoggedIn === true
-    ? localStorage.setItem('isUserLoggedIn', "true")
-    : localStorage.removeItem('isUserLoggedIn')
-  }, [isUserLoggedIn])
+  const {isUserLoggedIn, logIn, logOut} = useUser()
+
   return (
     <div>
      { isUserLoggedIn 
