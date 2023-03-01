@@ -1,36 +1,28 @@
 import './App.css';
+import React, {useState} from 'react';
 import PageHome from './pages/PageHome/PageHome';
 import PageMoviesSearch from './pages/PageMoviesSearch/PageMoviesSearch';
-import { Routes, Route, NavLink} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
+import { NavLink } from './components/NavLink/NavLink';
+import { NavBar } from './components/NavBar/NavBar';
+import { PageMoviesSearchResults } from './pages/PageMoviesSearchResults/PageMoviesSearchResults';
 
 function App() {
+  const [isUserLoggedIn, setUserLoggedIn] = useState(localStorage.getItem('isUserLoggedIn') === "true")
+ 
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <NavLink 
-              to="/"
-              style={({isActive}) => ({
-                fontWeight: isActive ? 700 : 400
-              })}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to="/movies/search"
-              style={({isActive}) => ({
-                fontWeight: isActive ? 700 : 400
-              })}>
-              Movies search
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+     { isUserLoggedIn 
+     ? <NavBar>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/movies/search">Movies search</NavLink>
+      </NavBar>
+      : null}
         <Routes>
           <Route path={"/"} element={<PageHome/>}></Route>
-          <Route path={"/movies/search"} element={<PageMoviesSearch/>}></Route>
+          <Route path={"/movies/search"} element={<PageMoviesSearch/>}>
+            <Route path={":searchPhrase"} element={<PageMoviesSearchResults/>}></Route>
+          </Route>
         </Routes>
     </div>
   );
